@@ -4,6 +4,7 @@ import Signup from './page/Signup';
 import Login from './page/Login';
 import { BrowserRouter as Router} from 'react-router-dom';
 import {Routes, Route} from 'react-router-dom';
+// https://www.freecodecamp.org/news/use-firebase-authentication-in-a-react-app/
 function App() {
     return (
         <Router>
