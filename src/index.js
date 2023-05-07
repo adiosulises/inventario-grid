@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Route, createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Error404 from './Error404';
 import Dashboard from './dashboard';
@@ -9,12 +9,18 @@ import Login from './login';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Dashboard />,
+    action: () => {
+      router.navigate('/login')
+    },
     errorElement: <Error404 />
   },
   {
     path: '/login',
     element: <Login />
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />
   }
 ]);
 
