@@ -1,16 +1,21 @@
 import React, {useState} from 'react';
-import {  signInWithEmailAndPassword   } from 'firebase/auth';
-import { auth } from '../firebase';
+//import {  signInWithEmailAndPassword   } from 'firebase/auth';
+//import { auth } from '../firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
+//import login from '../login';
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    //usamos el login del context
+    const { login} = useAuth();
+     //const [error, setError] = useState("");
 
     const onLogin = (e) => {
         e.preventDefault();
-        signInWithEmailAndPassword(auth, email, password)
+             login(email,password)
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;

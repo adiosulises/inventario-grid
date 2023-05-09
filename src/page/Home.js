@@ -2,8 +2,9 @@ import React from 'react';
 import {  signOut } from "firebase/auth";
 import {auth} from '../firebase.js';
 import { useNavigate } from 'react-router-dom';
+import { Navbar } from '../components/Navbar.jsx';
 
-const Home = () => {
+export const Home = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -16,21 +17,19 @@ const Home = () => {
         });
     }
 
-    return(
-        <>
-            <nav>
-                <p>
-                    Welcome Home
-                </p>
+    return (
+      <>
+        <div className="n">
+          <Navbar></Navbar>
 
-                <div>
-                    <button onClick={handleLogout}>
-                        Logout
-                    </button>
-                </div>
-            </nav>
-        </>
-    )
+          <div className="logout-button ">
+            <button onClick={handleLogout}>Logout</button>
+          </div>
+        </div>
+
+        <p>Welcome Home</p>
+      </>
+    );
 }
 
 export default Home;
