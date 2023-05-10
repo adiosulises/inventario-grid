@@ -37,46 +37,48 @@ const Login = () => {
     }
 
     return (
-        <main>
-        <section>
-            <div className='custom-w text-center mt-4'>
-                <h1> Boulder Grid </h1>
+        <>
+            <main>
+                <section>
+                    <div className='custom-w text-center mt-4'>
+                        <h1> Boulder Grid </h1>
 
-                <form>
-                    <div className='mb-3'>
-                        <input className='form-control'
-                            id="email-address"
-                            name="email"
-                            type="email"
-                            required
-                            placeholder="Correo"
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
+                        <form>
+                            <div className='mb-3'>
+                                <input className='form-control'
+                                       id="email-address"
+                                       name="email"
+                                       type="email"
+                                       required
+                                       placeholder="Correo"
+                                       onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </div>
 
-                    <div className='mb-3'>
-                        <input className='form-control'
-                            id="password"
-                            name="password"
-                            type="password"
-                            required
-                            placeholder="Contraseña"
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
+                            <div className='mb-3'>
+                                <input className='form-control'
+                                       id="password"
+                                       name="password"
+                                       type="password"
+                                       required
+                                       placeholder="Contraseña"
+                                       onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </div>
 
-                    <div className='d-grid'>
-                        <button type='button' class='btn btn-primary btn-block'
-                            onClick={onLogin}
-                        >
-                            Iniciar sesión
-                        </button>
+                            <div className='d-grid'>
+                                <button type='button' class='btn btn-primary btn-block'
+                                        onClick={onLogin}
+                                >
+                                    Iniciar sesión
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                </form>
-            </div>
-        </section>
-    </main>
-    );
+                </section>
+            </main>
+        </>
+    )
 }
 
 export default Login

@@ -20,7 +20,7 @@ export function Navbar() {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <Link to="/rentables" className="nav-link active">
+              <Link to="/vendibles" className="nav-link active">
                 Vendibles
               </Link>
             </li>
@@ -30,17 +30,17 @@ export function Navbar() {
               </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/inmuebles">
                 Inmueble
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/dañados">
                 Dañados
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/reportes">
                 Reportes
               </a>
             </li>
