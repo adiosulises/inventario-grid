@@ -1,3 +1,7 @@
+html,body {
+    height: 100%;
+}
+
 .topnav {
 
     padding-left: 40px;
@@ -82,4 +86,13 @@
             background-color: #ddd;
             color: black;
             
+}
+
+.custom-w {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.height-100 {
+    height: 100vh;
 }
