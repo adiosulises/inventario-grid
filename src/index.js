@@ -17,6 +17,7 @@ import {Rentables} from "./page/Rentables"
 import {Inmuebles} from "./page/Inmuebles"
 import { Dañados } from './page/Dañados';
 import { Reporte} from "./page/Reporte";
+
 const router = createBrowserRouter([
   {
     path: "/",

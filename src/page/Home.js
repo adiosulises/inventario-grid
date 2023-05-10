@@ -20,14 +20,14 @@ export const Home = () => {
 
   return (
     <>
-      <div className='row'>
-        <div className="col-2 m-3 text-center">
+      <div className='row height-100'>
+        <div className="col-2 text-center m-3">
           <p>Datos usuario</p>
           <div className='d-grid'>
             <button type='button' className='btn btn-secondary btn-block' onClick={handleLogout}>Logout</button>
           </div>
         </div>
-        <div className="col">
+        <div className="col m-0 p-0 bg-primary bg-gradient">
           <Navbar></Navbar>
         </div>
       </div>

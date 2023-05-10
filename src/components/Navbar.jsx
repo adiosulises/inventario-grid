@@ -17,9 +17,6 @@ export function Navbar() {
 
     <nav class="navbar navbar-expand nav-fill bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          Navbar
-        </a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
