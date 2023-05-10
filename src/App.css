@@ -83,3 +83,8 @@
             color: black;
             
 }
+
+.custom-w {
+    width: 400px;
+    margin: 0 auto;
+}
