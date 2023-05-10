@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {  createBrowserRouter, RouterProvider } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css'
+import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 
 import Error404 from './Error404';
 import Dashboard from './dashboard';
