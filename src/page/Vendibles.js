@@ -9,7 +9,6 @@ export function Vendibles() {
   return (
 
     <>
-      <Header />
     <div>Vendibles</div>
   <Tabla2 list={Datos("vendibles")} ></Tabla2>
     </>

@@ -17,6 +17,7 @@ import {Rentables} from "./page/Rentables"
 import {Inmuebles} from "./page/Inmuebles"
 import { Dañados } from './page/Dañados';
 import { Reporte} from "./page/Reporte";
+import Tabs from './components/Tabs.jsx';
 
 const router = createBrowserRouter([
   {
@@ -86,6 +87,14 @@ const router = createBrowserRouter([
       </ProtectedRoute>
     ),
   },
+  {
+    path: "/test",
+    element: (
+      <ProtectedRoute>
+        <Tabs/>
+      </ProtectedRoute>
+    )
+  }
 ]);
 
 

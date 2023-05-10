@@ -96,3 +96,15 @@ html,body {
 .height-100 {
     height: 100vh;
 }
+
+.hide {
+    display: none;
+}
+
+.show {
+    
+}
+
+.nav-item:hover {
+    cursor: pointer;
+}
