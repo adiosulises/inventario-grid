@@ -1,9 +1,12 @@
 import React from "react";
 import { Datos } from "../components/Datos";
+import header from "../header/header";
+import Header from "../header/header";
 export function Inmuebles() {
    const list = Datos("inmuebles");
    return (
      <>
+         <Header />
        <div>Vendibles</div>
 
        <table id="customers">
