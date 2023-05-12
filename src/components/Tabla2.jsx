@@ -1,11 +1,16 @@
 ///tabla hecha para reutilizacion con 4 columnas
 import React from "react";
+import { useState } from "react";
+import Modal from "./Modal";
 
 export function Tabla2(props) {
   const list = props.list;
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleRowClick = (item) => {
-    // Handle the row click event here
+    setSelectedItem(item);
+    setModalVisible(true);
     console.log("Row clicked:", item);
   };
 
@@ -37,6 +42,10 @@ export function Tabla2(props) {
           ))}
         </tbody>
       </table>
+
+      {modalVisible && (
+        <Modal item={selectedItem} onClose={() => setModalVisible(false)} />
+      )}
     </>
   );
 }

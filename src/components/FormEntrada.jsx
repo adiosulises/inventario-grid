@@ -2,7 +2,7 @@ import React from "react";
 
 //const data = [];
 
-export function FormEntrada() {
+export function FormEntrada(item) {
   return (
     <>
       <form className="row" action="">
