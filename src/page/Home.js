@@ -31,7 +31,7 @@ export const Home = () => {
         <div className="col m-0 p-0">
           <Tabs></Tabs>
         </div>
-        <ModalBoton></ModalBoton>
+        
       </div>
     </>
   );

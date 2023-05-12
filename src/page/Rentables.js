@@ -11,7 +11,7 @@ export function Rentables() {
           <tr>
             <th>Nombre</th>
             <th>Descripcion</th>
-            <th>Provedor</th>
+            <th>Proveedor</th>
             <th>Precio</th>
             <th>Cantidad</th>
           </tr>
