@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Modal = ({ item, visible, onClose }) => {
+export const Modal = ({ item, visible }) => {
   if (!visible) return null;
 
   return (
@@ -56,7 +56,7 @@ export const Modal = ({ item, visible, onClose }) => {
             />
           </div>
         </form>
-        <button className="btn btn-primary" onClick={onClose}>Cerrar</button>
+        <button className="btn btn-primary">Cerrar</button>
       </div>
     </div>
   );
