@@ -18,6 +18,7 @@ import {Inmuebles} from "./page/Inmuebles"
 import { Dañados } from './page/Dañados';
 import { Reporte} from "./page/Reporte";
 import Tabs from './components/Tabs.jsx';
+import { ModalBoton } from './components/ModalBoton';
 
 const router = createBrowserRouter([
   {
@@ -94,7 +95,8 @@ const router = createBrowserRouter([
         <Tabs/>
       </ProtectedRoute>
     )
-  }
+  },
+  
 ]);
 
 

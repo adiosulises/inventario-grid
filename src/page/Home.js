@@ -4,7 +4,7 @@ import { auth } from '../firebase.js';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/Navbar.jsx';
 import Tabs from '../components/Tabs.jsx';
-import '../App.css';
+import {ModalBoton}  from "../components/ModalBoton.jsx"
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -31,6 +31,7 @@ export const Home = () => {
         <div className="col m-0 p-0">
           <Tabs></Tabs>
         </div>
+        <ModalBoton></ModalBoton>
       </div>
     </>
   );
