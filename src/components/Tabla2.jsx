@@ -1,6 +1,7 @@
 ///tabla hecha para reutilizacion con 4 columnas
 import React from "react";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Modal from "./Modal";
 
 export function Tabla2(props) {
@@ -22,8 +23,11 @@ export function Tabla2(props) {
     console.log("modalVisible:", modalVisible);
   }, [modalVisible]);
 
+  // () => handleRowClick(item)
+
   return (
     <>
+      <Modal item={selectedItem} visible={modalVisible} handleClose={closeModal} />
       <table id="customers">
         <tbody>
           <tr>
@@ -50,13 +54,6 @@ export function Tabla2(props) {
           ))}
         </tbody>
       </table>
-
-      {modalVisible && (
-        <Modal
-          item={selectedItem}
-          visible={modalVisible}
-        />
-      )}
     </>
   );
 }

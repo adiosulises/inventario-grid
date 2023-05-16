@@ -1,10 +1,17 @@
 import React from "react";
+import { Modal as Popup, Box, Typography } from "@mui/material";
 
-export const Modal = ({ item, visible }) => {
-  if (!visible) return null;
+export const Modal = ({ item, visible, handleClose }) => {
+  console.log("me abri");
 
+  if(!item) return;
   return (
-    <div className="modal">
+    <Popup
+      open={visible}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
       <div className="modal-content">
         <form className="row" action="">
           <div className="col-12">
@@ -15,7 +22,8 @@ export const Modal = ({ item, visible }) => {
               type="text"
               className="form-control"
               id="vendibleNombre"
-              value={item.nombre} readOnly
+              value={item.nombre}
+              readOnly
               disabled
             />
           </div>
@@ -27,7 +35,8 @@ export const Modal = ({ item, visible }) => {
               type="number"
               className="form-control"
               id="vendiblePrecio"
-              value={item.precio} readOnly
+              value={item.precio}
+              readOnly
               disabled
             />
           </div>
@@ -39,7 +48,8 @@ export const Modal = ({ item, visible }) => {
               type="text"
               className="form-control"
               id="vendibleCant"
-              value={item.cantidad} readOnly
+              value={item.cantidad}
+              readOnly
               disabled
             />
           </div>
@@ -56,9 +66,9 @@ export const Modal = ({ item, visible }) => {
             />
           </div>
         </form>
-        <button className="btn btn-primary">Cerrar</button>
+        <button className="btn btn-primary" onClick={handleClose}>Cerrar</button>
       </div>
-    </div>
+    </Popup>
   );
 };
 
