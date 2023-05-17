@@ -2,7 +2,7 @@ import React from "react";
 import { Datos } from "../components/Datos";
 export function Dañados() {
   const list = Datos("afectados");
-  console.log(list)
+  console.log(list);
   return (
     <>
       <table id="customers">
