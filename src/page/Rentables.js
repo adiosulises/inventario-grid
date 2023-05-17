@@ -1,28 +1,39 @@
 import React from "react";
 import { Datos } from "../components/Datos";
 
+
 export function Rentables() {
-  const l = Datos("Rentables");
+  const list = Datos("Rentables");
   return (
     <>
       <table id="customers">
         <tbody>
           <tr>
             <th>Nombre</th>
-
-            <th>Proveedor</th>
-
+            <th>Descripcion</th>
+            <th>Provedor</th>
             <th>Precio</th>
             <th>Cantidad</th>
           </tr>
 
-          {l.map((item) => (
+          {list.map((item) => (
             <tr key={item.id}>
-              <td>{item.nombre}</td>
+              <td>
+                {item.nombre}
+              </td>
 
-              <td>{item["proveedores.nombre"]}</td>
-              <td>{item.precio}</td>
-              <td>{item.Cantidad}</td>
+              <td>
+                {item.descripcion}
+              </td>
+              <td>
+                {item.nombre.provedor}
+              </td>
+              <td>
+                ${item.precio}
+              </td>
+              <td>
+                {item.cantidad}
+              </td>
             </tr>
           ))}
         </tbody>

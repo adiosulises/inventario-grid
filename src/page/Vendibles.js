@@ -81,7 +81,7 @@ export function Vendibles() {
               <td>
                 <p>{item["proveedor"]}</p>
               </td>
-              <td>{item.precio}</td>
+              <td>${item.precio}</td>
               <td>
                 <p>{item.cantidad}</p>
               </td>

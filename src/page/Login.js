@@ -12,7 +12,10 @@ const Login = () => {
     const [password, setPassword] = useState('');
     //usamos el login del context
     const { login} = useAuth();
-     const [error, setError] = useState("");
+    const [error, setError] = useState("");
+    const [authenticated, setauthenticated] = useState(
+        localStorage.getItem(localStorage.getItem("authenticated") || false)
+    );
 
     const onLogin = (e) => {
         setError("");
@@ -21,6 +24,7 @@ const Login = () => {
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;
+
                 navigate("/home")
                 console.log(user);
                 
@@ -35,10 +39,13 @@ const Login = () => {
         
       
     }
+    const checkAuth = () => {
+
+    }
 
     return (
         <>
-            <main>
+            <main onLoad={checkAuth}>
                 <section>
                     <div className='custom-w text-center mt-4'>
                         <h1> Boulder Grid </h1>

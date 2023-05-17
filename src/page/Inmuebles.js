@@ -1,5 +1,7 @@
 import React from "react";
 import { Datos } from "../components/Datos";
+import header from "../header/header";
+import Header from "../header/header";
 export function Inmuebles() {
   const list = Datos("inmuebles");
   return (
@@ -16,15 +18,24 @@ export function Inmuebles() {
 
           {list.map((item) => (
             <tr key={item.id}>
-              <td>{item.nombre}</td>
-              <td>{item.descripcion}</td>
-              <td>{item["proveedores.nombre"]}</td>
-              <td>{item.precio}</td>
-              <td>{item.cantidad}</td>
+              <td>
+                {item.nombre}
+              </td>
+              <td>
+                {item.descripcion}
+              </td>
+              <td>{item.nombre.provedor}</td>
+              <td>
+                ${item.precio}
+              </td>
+              <td>
+                {item.cantidad}
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
     </>
   );
+
 }
