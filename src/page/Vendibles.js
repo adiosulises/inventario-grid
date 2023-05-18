@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 //import { Tabla2 } from "../../components/Tabla2";
 //import { ModalBoton } from "../components/ModalBoton";
 
-import Modal from "react-bootstrap/Modal";
+import Modal from  "react-bootstrap/Modal";
 import { FormEntrada } from "../components/FormEntrada";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
@@ -92,7 +92,7 @@ export function Vendibles() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{selectedItem && (selectedItem.nombre)}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {selectedItem && (
