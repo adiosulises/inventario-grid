@@ -3,6 +3,7 @@ import React from "react";
 
 export function FormEntrada({ selectedItem, handleClose, updateCantidad }) {
   const [newCantidad, setNewCantidad] = useState(0);
+  const [cantidadItem, setcantidadItem] = useState(selectedItem.cantidad);
 
   const handleSaveChanges = (event) => {
     event.preventDefault();
@@ -13,6 +14,7 @@ export function FormEntrada({ selectedItem, handleClose, updateCantidad }) {
     //handleClose();
    let inputElement = document.getElementById("vendibleNum");
    inputElement.value = "0";
+   setcantidadItem(cantidadItem+newCantidad)
   };
   const handleChangeCantidad = (event) => {
     setNewCantidad(parseInt(event.target.value));
@@ -53,7 +55,7 @@ export function FormEntrada({ selectedItem, handleClose, updateCantidad }) {
           className="form-control"
           id="vendibleCant"
           disabled
-          value={selectedItem.cantidad+newCantidad}
+          value={cantidadItem}
         />
       </div>
       <div className="col-6">
