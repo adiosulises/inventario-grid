@@ -10,7 +10,9 @@ export function FormEntrada({ selectedItem, handleClose, updateCantidad }) {
       selectedItem.id,
       Number(selectedItem.cantidad) + newCantidad
     );
-    handleClose();
+    //handleClose();
+   let inputElement = document.getElementById("vendibleNum");
+   inputElement.value = "0";
   };
   const handleChangeCantidad = (event) => {
     setNewCantidad(parseInt(event.target.value));
@@ -51,7 +53,7 @@ export function FormEntrada({ selectedItem, handleClose, updateCantidad }) {
           className="form-control"
           id="vendibleCant"
           disabled
-          value={selectedItem.cantidad}
+          value={selectedItem.cantidad+newCantidad}
         />
       </div>
       <div className="col-6">
@@ -65,6 +67,7 @@ export function FormEntrada({ selectedItem, handleClose, updateCantidad }) {
           id="vendibleNum"
           placeholder="0"
           onChange={handleChangeCantidad}
+          
         />
       </div>
       <div className="modal-footer">
