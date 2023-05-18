@@ -10,8 +10,7 @@ export function Rentables() {
         <tbody>
           <tr>
             <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Provedor</th>
+            <th>Proveedor</th>
             <th>Precio</th>
             <th>Cantidad</th>
           </tr>
@@ -21,18 +20,14 @@ export function Rentables() {
               <td>
                 {item.nombre}
               </td>
-
               <td>
-                {item.descripcion}
-              </td>
-              <td>
-                {item.nombre.provedor}
+                {item["proveedores.nombre"]}
               </td>
               <td>
                 ${item.precio}
               </td>
               <td>
-                {item.cantidad}
+                {item.Cantidad}
               </td>
             </tr>
           ))}

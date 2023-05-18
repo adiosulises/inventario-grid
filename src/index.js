@@ -26,80 +26,25 @@ import { ModalBoton } from './components/ModalBoton';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/login" />,
+    element: <Navigate to="/home" />,
     errorElement: <Error404 />,
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <ProtectedRoute>
+        <Login />
+      </ProtectedRoute>
+    ),
   },
   {
-    path: "/dashboard",
-    element: <Dashboard />,
-  },
-
-  {
-    path: "/Tabla",
-    element: <Tabla />,
-  },
-  {
-    path: "/Home",
+    path: "/home",
     element: (
       <ProtectedRoute>
         <Home />
       </ProtectedRoute>
     ),
   },
-  {
-    path: "/vendibles",
-
-    element: (
-      <ProtectedRoute>
-        <Vendibles />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/rentables",
-    element: (
-      <ProtectedRoute>
-        <Rentables />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/inmuebles",
-    element: (
-      <ProtectedRoute>
-        <Inmuebles />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/dañados",
-    element: (
-      <ProtectedRoute>
-        <Dañados />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/reporte",
-    element: (
-      <ProtectedRoute>
-        <Reporte/>
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/test",
-    element: (
-      <ProtectedRoute>
-        <Tabs/>
-      </ProtectedRoute>
-    )
-  },
-  
 ]);
 
 
