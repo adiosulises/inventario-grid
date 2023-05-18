@@ -67,8 +67,11 @@ export function FormEntrada({ selectedItem, handleClose, updateCantidad }) {
           onChange={handleChangeCantidad}
         />
       </div>
-      <div className="modal-footer">
-        <button className="btn btn-primary">Save Changes</button>
+      <div className="mt-3 col-12">
+        <button className="btn btn-danger btn-block w-100" onClick={handleClose}>Cerrar</button>
+      </div>
+      <div className="mt-3 col-12">
+        <button className="btn btn-primary btn-block w-100">Guardar Cambios</button>
       </div>
     </form>
   );
