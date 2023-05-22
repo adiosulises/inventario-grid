@@ -108,3 +108,8 @@ html,body {
 .nav-item:hover {
     cursor: pointer;
 }
+
+.logo {
+    width: 100px;
+    height: 100%;
+}

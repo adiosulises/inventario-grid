@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from '../assets/logo.png'
 //import {  signInWithEmailAndPassword   } from 'firebase/auth';
 //import { auth } from '../firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
@@ -11,7 +12,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     //usamos el login del context
-    const { login} = useAuth();
+    const { login } = useAuth();
     const [error, setError] = useState("");
     const [authenticated, setauthenticated] = useState(
         localStorage.getItem(localStorage.getItem("authenticated") || false)
@@ -27,7 +28,7 @@ const Login = () => {
 
                 navigate("/home")
                 console.log(user);
-                
+
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -35,9 +36,9 @@ const Login = () => {
                 console.log(errorCode, errorMessage)
                 setError(errorMessage)
             });
-        
-        
-      
+
+
+
     }
     const checkAuth = () => {
 
@@ -48,34 +49,34 @@ const Login = () => {
             <main onLoad={checkAuth}>
                 <section>
                     <div className='custom-w text-center mt-4'>
-                        <h1> Boulder Grid </h1>
-
+                        {/* <h1> Boulder Grid </h1> */}
+                        <img src={logo} className='logo mt-4 mb-4' alt="logo" />
                         <form>
                             <div className='mb-3'>
                                 <input className='form-control'
-                                       id="email-address"
-                                       name="email"
-                                       type="email"
-                                       required
-                                       placeholder="Correo"
-                                       onChange={(e) => setEmail(e.target.value)}
+                                    id="email-address"
+                                    name="email"
+                                    type="email"
+                                    required
+                                    placeholder="Correo"
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
 
                             <div className='mb-3'>
                                 <input className='form-control'
-                                       id="password"
-                                       name="password"
-                                       type="password"
-                                       required
-                                       placeholder="Contraseña"
-                                       onChange={(e) => setPassword(e.target.value)}
+                                    id="password"
+                                    name="password"
+                                    type="password"
+                                    required
+                                    placeholder="Contraseña"
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
 
                             <div className='d-grid'>
                                 <button type='button' class='btn btn-primary btn-block'
-                                        onClick={onLogin}
+                                    onClick={onLogin}
                                 >
                                     Iniciar sesión
                                 </button>

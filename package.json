@@ -1,6 +1,6 @@
 {
   "name": "bouldercrud",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.0",
@@ -42,5 +42,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Iniciar la instalación de dependencias necesarias para la compilación y modificación del codigo mismo",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "inventario-grid"
+  },
+  "keywords": [
+    "inventory"
+  ],
+  "author": "equipo 3",
+  "license": "ISC"
 }
