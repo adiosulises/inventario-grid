@@ -1,7 +1,9 @@
 import React from "react";
-import { Datos } from "../components/Datos";
+import { useAuth } from "../context/AuthContext";
 export function Dañados() {
-  const list = Datos("afectados");
+  
+  const {dts,sdts}= useAuth();
+  const list = dts()
   console.log(list)
   return (
     <>
@@ -17,7 +19,7 @@ export function Dañados() {
             <tr key={item.id}>
               <td>{item.item}</td>
               <td>{item.reporte}</td>
-              <td>{item["usuarios.nombre"]}</td>
+              <td>{item.usuarios_nombre}</td>
             </tr>
           ))}
         </tbody>

@@ -6,11 +6,13 @@ import React, { useState, useEffect } from "react";
 import Modal from  "react-bootstrap/Modal";
 import { FormEntrada } from "../components/FormEntrada";
 import { updateDoc, doc } from "firebase/firestore";
-import { db } from "../firebase";
+import {  db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 export function Vendibles() {
   const [data, setData] = useState([]);
+
+  
 
   //funcion para actualizar los datos del form
   const updateCantidad = async (itemId, newCantidad) => {
@@ -35,6 +37,7 @@ export function Vendibles() {
   //estado para seleccionar el item
   const [selectedItem, setSelectedItem] = useState(null);
   //
+
   //al precionar close en el modal
   const handleClose = () => {
     setSelectedItem(null);
