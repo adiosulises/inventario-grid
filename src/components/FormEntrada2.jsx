@@ -9,7 +9,7 @@ export function FormEntrada2({ selectedItem, handleClose, add,updateRentable,del
    
     if(checkboxValue){
       
-      add(selectedItem.nombre, selectedItem.id, checkboxValue,selectedItem.usuario);
+      add(selectedItem.nombre, selectedItem.id, checkboxValue,selectedItem.usuario,report);
      // updateRentable(selectedItem.id, checkboxValue);
       
         
@@ -23,9 +23,14 @@ export function FormEntrada2({ selectedItem, handleClose, add,updateRentable,del
   };
   
    const [checkboxValue, setCheckboxValue] = useState(selectedItem.afectado);
+   const [report, setReporte] = useState("");
    
    const handleCheckboxChange = (event) => {
      setCheckboxValue(event.target.checked);
+   };
+   const handleReporteChange = (event) => {
+     setReporte(event.target.value);
+     console.log(report)
    };
    console.log(checkboxValue);
 
@@ -92,9 +97,18 @@ export function FormEntrada2({ selectedItem, handleClose, add,updateRentable,del
             aria-label="Checkbox for following text input"
           />
         </div>
-        
       </div>
-      
+      <div className="col-6">
+        <label htmlFor="vendibleReporte" className="form-label">
+          Falla
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="vendibleReporte"
+          onChange={handleReporteChange}
+        />
+      </div>
 
       <div className="mt-3 col-12">
         <button className="btn btn-primary btn-block w-100">

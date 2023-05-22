@@ -17,7 +17,7 @@ export function Rentables() {
     const { actualizarAfectados } = useAuth();
     const { datosVendibles, actualizarRentables } = useAuth();
   //const [data, setData] = useState([]);
-   const add= async (nombre,ref,check,usuario) => {
+   const add= async (nombre,ref,check,usuario,report) => {
     try {
       
       const q = query(collection(db, "afectados"), where("idr", "==", ref));
@@ -33,7 +33,7 @@ export function Rentables() {
           idr: ref,
           afectado: check,
           item: nombre,
-          reporte: "le falla la banda",
+          reporte: report,
           usuarios_nombre: usuario,
         });
         actualizarAfectados();

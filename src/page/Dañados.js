@@ -11,7 +11,7 @@ export function Dañados() {
         <tbody>
           <tr>
             <th>Item</th>
-            <th>Reporte</th>
+            <th>Falla</th>
             <th>Nombre usuario</th>
           </tr>
 
