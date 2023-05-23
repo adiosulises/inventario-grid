@@ -5,14 +5,40 @@ import React, { useState, useEffect } from "react";
 
 import Modal from  "react-bootstrap/Modal";
 import { FormEntrada } from "../components/FormEntrada";
-import { updateDoc, doc } from "firebase/firestore";
+import { updateDoc, doc,addDoc } from "firebase/firestore";
 import {  db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
-
+import { FormAgregar } from "../components/FormAgregar";
 export function Vendibles() {
   const [data, setData] = useState([]);
 
-  
+  const aggProducto = async (
+    nombre,
+    proveedor,
+    precio,
+    cantidad,
+    max,
+    min,
+    categoria
+  ) => {
+    try {
+      const collectionRef = collection(db, "vendibles");
+      await addDoc(collectionRef, {
+        nombre: nombre,
+        proveedor: proveedor,
+        precio: precio,
+        cantidad: cantidad,
+        max: max,
+        min: min,
+        categoria: categoria,
+      });
+
+      console.log("Nuevo documento agregado correctamente");
+      fetchPost();
+    } catch (error) {
+      console.error("Error al agregar el nuevo documento:", error);
+    }
+  };
 
   //funcion para actualizar los datos del form
   const updateCantidad = async (itemId, newCantidad) => {
@@ -64,6 +90,17 @@ export function Vendibles() {
     fetchPost();
   }, []);
 
+
+  const [show2, setShow2] = useState(false);
+
+  const handleClose2 = () => {
+    setShow2(false);
+  };
+
+  //mostrar el modal
+  const handleShow2 = () => {
+    setShow2(true);
+  };
   return (
     <>
       <table id="customers">
@@ -91,11 +128,19 @@ export function Vendibles() {
             </tr>
           ))}
         </tbody>
+        <div className="mt-3 col-6">
+        <button
+          className="btn btn-primary btn-block w-20"
+          onClick={() => handleShow2()}
+        >
+          Nuevo producto
+        </button>
+        </div>
       </table>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{selectedItem && (selectedItem.nombre)}</Modal.Title>
+          <Modal.Title>{selectedItem && selectedItem.nombre}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {selectedItem && (
@@ -105,6 +150,19 @@ export function Vendibles() {
               updateCantidad={updateCantidad}
             />
           )}
+        </Modal.Body>
+        <Modal.Footer></Modal.Footer>
+      </Modal>
+
+      {/*modal para añadir nuevo item*/}
+      <Modal show={show2} onHide={handleClose2}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <p>Nuevo Producto</p>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <FormAgregar aggProducto={aggProducto} handleClose2={handleClose2} />
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
       </Modal>
