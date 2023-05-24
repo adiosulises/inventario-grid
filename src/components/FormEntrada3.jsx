@@ -1,23 +1,31 @@
 import { useState } from "react";
 import React from "react";
 
-export function FormEntrada2({ selectedItem, handleClose, updateRentable }) {
+export function FormEntrada3({
+  selectedItem,
+  handleClose2,
+  updateImnuebles,
+}) {
   const handleSaveChanges = (event) => {
     event.preventDefault();
-    updateRentable(selectedItem.id, checkboxValue, report);
-    /*if(checkboxValue){
+    console.log(checkboxValue)
+    console.log(report)
+    
+   updateImnuebles(selectedItem.id, checkboxValue,report);
+   /* if (checkboxValue) {
+      add(
+        selectedItem.nombre,
+        selectedItem.id,
+        checkboxValue,
+        report
+      );
       
-      add(selectedItem.nombre, selectedItem.id, checkboxValue,selectedItem.usuario,report);
-     // updateRentable(selectedItem.id, checkboxValue);
-      
-        
-    }else {
+    } else {
       delet(selectedItem.id);
-     
       
-    }
-   */
-    handleClose();
+    }*/
+
+    handleClose2();
   };
 
   const [checkboxValue, setCheckboxValue] = useState(selectedItem.afectado);
@@ -25,13 +33,16 @@ export function FormEntrada2({ selectedItem, handleClose, updateRentable }) {
 
   const handleCheckboxChange = (event) => {
     setCheckboxValue(event.target.checked);
+    console.log("inmueble")
+     
   };
   const handleReporteChange = (event) => {
     setReporte(event.target.value);
+    
     console.log(report);
   };
+ 
   console.log(checkboxValue);
-
   return (
     <form className="row" action="" onSubmit={handleSaveChanges}>
       <div className="col-12">
@@ -67,7 +78,7 @@ export function FormEntrada2({ selectedItem, handleClose, updateRentable }) {
           className="form-control"
           id="vendibleCant"
           disabled
-          value={selectedItem.Cantidad}
+          value={selectedItem.cantidad}
         />
       </div>
       <div className="col-6">

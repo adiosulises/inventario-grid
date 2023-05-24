@@ -1,110 +1,53 @@
-import React ,{useState} from "react";
+import React, { useState } from "react";
 import { FormEntrada2 } from "../components/FormEntrada2";
 import Modal from "react-bootstrap/Modal";
 import { db } from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
+/*import { collection, addDoc } from "firebase/firestore";*/
 import { updateDoc, doc } from "firebase/firestore";
-import {
+/*import {
   query,
   where,
   getDocs,
   deleteDoc,
-} from "firebase/firestore";
+} from "firebase/firestore";*/
 import { useAuth } from "../context/AuthContext";
 
-
 export function Rentables() {
-    const { actualizarAfectados } = useAuth();
-    const { datosVendibles, actualizarRentables } = useAuth();
+  const { actualizarAfectados } = useAuth();
+  const { datosRentables, actualizarRentables } = useAuth();
   //const [data, setData] = useState([]);
-   const add= async (nombre,ref,check,usuario,report) => {
+
+  const updateRentable = async (itemId, cambio, falla) => {
     try {
-      
-      const q = query(collection(db, "afectados"), where("idr", "==", ref));
-      const querySnapshot = await getDocs(q);
-
-      if (!querySnapshot.empty) {
-        console.log("El item existe en al menos un documento");
-      } else {
-        console.log("El item no existe en ningún documento");
-        
-        const collectionRef = collection(db, "afectados");
-        await addDoc(collectionRef, {
-          idr: ref,
-          afectado: check,
-          item: nombre,
-          reporte: report,
-          usuarios_nombre: usuario,
-        });
-        actualizarAfectados();
-        updateRentable(selectedItem.id, check);
-        console.log("Nuevo documento agregado correctamente");
-
-
-      }
-      
-      
-      
-      
+      const rentablebleRef = doc(db, "Rentables", itemId);
+      await updateDoc(rentablebleRef, { afectado: cambio, falla: falla });
+      console.log("Cantidad actualizada correctamente");
+      actualizarRentables();
+      actualizarAfectados();
+      //cada que se actualize un dato se actualiza el array local
     } catch (error) {
-      console.error("Error al agregar el nuevo documento:", error);
+      console.error("Error al actualizar la cantidad:", error);
     }
-       
-   };
-   const delet = async (id) => {
-     try {
-       // Realizar una consulta para obtener los documentos que coinciden con el campo "item"
-       const q = query(
-         collection(db, "afectados"),
-         where("idr", "==", id)
-       );
-       const querySnapshot = await getDocs(q);
+  };
+  //estado para ver el modal
+  const [show, setShow] = useState(false);
+  //estado para seleccionar el item
+  const [selectedItem, setSelectedItem] = useState(null);
+  //
 
-       // Eliminar los documentos obtenidos de la consulta
-       querySnapshot.forEach(async (doc) => {
-         await deleteDoc(doc.ref);
-       });
-       actualizarAfectados();
-       console.log("Documentos eliminados correctamente");
-     } catch (error) {
-       console.error("Error al eliminar los documentos:", error);
-     }
-   };
+  //al presionar close en el modal
+  const handleClose = () => {
+    setSelectedItem(null);
+    setShow(false);
+  };
 
-  
+  //mostrar el modal
+  const handleShow = (item) => {
+    setSelectedItem(item);
+    setShow(true);
+  };
 
-   const updateRentable = async (itemId, cambio) => {
-     try {
-       const rentablebleRef = doc(db, "Rentables", itemId);
-       await updateDoc(rentablebleRef, { afectado: cambio });
-       console.log("Cantidad actualizada correctamente");
-       actualizarRentables();
-       //cada que se actualize un dato se actualiza el array local
-     } catch (error) {
-       console.error("Error al actualizar la cantidad:", error);
-     }
-   };
-   //estado para ver el modal
-   const [show, setShow] = useState(false);
-   //estado para seleccionar el item
-   const [selectedItem, setSelectedItem] = useState(null);
-   //
-
-   //al precionar close en el modal
-   const handleClose = () => {
-     setSelectedItem(null);
-     setShow(false);
-   };
-
-   //mostrar el modal
-   const handleShow = (item) => {
-     setSelectedItem(item);
-     setShow(true);
-   };
-
-
-
-  const list = datosVendibles();
+  const list = datosRentables();
   return (
     <>
       <table id="customers">
@@ -116,14 +59,16 @@ export function Rentables() {
             <th>Cantidad</th>
           </tr>
 
-          {list.map((item) => (
-            <tr key={item.id} onClick={() => handleShow(item)}>
-              <td>{item.nombre}</td>
-              <td>{item["proveedores.nombre"]}</td>
-              <td>${item.precio}</td>
-              <td>{item.Cantidad}</td>
-            </tr>
-          ))}
+          {list
+            .filter((item) => item.afectado === false)
+            .map((item) => (
+              <tr key={item.id} onClick={() => handleShow(item)}>
+                <td>{item.nombre}</td>
+                <td>{item["proveedores.nombre"]}</td>
+                <td>${item.precio}</td>
+                <td>{item.Cantidad}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
 
@@ -136,10 +81,7 @@ export function Rentables() {
             <FormEntrada2
               selectedItem={selectedItem}
               handleClose={handleClose}
-              add={add}
               updateRentable={updateRentable}
-              delet={delet}
-             
             />
           )}
         </Modal.Body>

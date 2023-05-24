@@ -23,7 +23,7 @@ export function AuthProvider({ children }) {
   const [todos, setTodos] = useState([]);
 
   const fetchPost = async () => {
-    await getDocs(collection(db, "afectados")).then((querySnapshot) => {
+    await getDocs(collection(db, "Rentables")).then((querySnapshot) => {
       const newData = querySnapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
@@ -32,47 +32,67 @@ export function AuthProvider({ children }) {
       console.log(todos);
     });
   };
-  
+
   const dts = () => {
-    return todos
+    return todos;
   };
-   const sdts = (data) => {
-     return setTodos;
-   };
-   const actualizarAfectados = () => {
-     fetchPost();
-   };
+  const sdts = (data) => {
+    return setTodos;
+  };
+  const actualizarAfectados = () => {
+    fetchPost();
+  };
   //// end datos y funciones tabla afectados
 
-  ///datos y funciones de vendibles
-   const [Rentables, setRentables] = useState([]);
+  ///datos y funciones de rentables
+  const [Rentables, setRentables] = useState([]);
 
-   const fetchRentables = async () => {
-     await getDocs(collection(db, "Rentables")).then((querySnapshot) => {
-       const newData = querySnapshot.docs.map((doc) => ({
-         ...doc.data(),
-         id: doc.id,
-       }));
-       setRentables(newData); 
-     });
-   };
+  const fetchRentables = async () => {
+    await getDocs(collection(db, "Rentables")).then((querySnapshot) => {
+      const newData = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setRentables(newData);
+    });
+  };
 
-   const datosVendibles = () => {
-     return Rentables;
-   };
-   const actualizarRentables = () => {
-     fetchRentables();
-   };
-  ////end datos y funciones de vendibles
+  const datosRentables = () => {
+    return Rentables;
+  };
+  const actualizarRentables = () => {
+    fetchRentables();
+  };
+  ////end datos y funciones de rentables
+
+  //datos y funciones de inmuebles
+  const [Inmuebles, setInmuebles] = useState([]);
+
+  const fetchInmuebles = async () => {
+    await getDocs(collection(db, "inmuebles")).then((querySnapshot) => {
+      const newData = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setInmuebles(newData);
+    });
+  };
+
+  const datosInmuebles = () => {
+    return Inmuebles;
+  };
+  const actualizarInmuebles = () => {
+    fetchInmuebles();
+  };
+  ///end inmuebles
+
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-
   const logout = () => signOut(auth);
 
-
-  useEffect( () => {
+  useEffect(() => {
     const unsubuscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log({ currentUser });
       setUser(currentUser);
@@ -80,6 +100,8 @@ export function AuthProvider({ children }) {
     });
     fetchPost();
     fetchRentables();
+    fetchInmuebles();
+
     return () => unsubuscribe();
   }, []);
 
@@ -93,8 +115,10 @@ export function AuthProvider({ children }) {
         dts,
         sdts,
         actualizarAfectados,
-        datosVendibles,
-        actualizarRentables
+        datosRentables,
+        actualizarRentables,
+        datosInmuebles,
+        actualizarInmuebles,
       }}
     >
       {children}
